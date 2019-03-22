@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<customers>
+    <customer>
+        <fio>Александр Рогов</fio>
+        <cardNumber>2000000000001</cardNumber>
+        <phone>+79170074642</phone>
+        <sum>0</sum>
+        <percent>3</percent>
+    </customer>
+    <customer>
+        <fio>Александр Рогов</fio>
+        <cardNumber>2000000000002</cardNumber>
+        <phone>+79170074643</phone>
+        <sum>0</sum>
+        <percent>3</percent>
+    </customer>
+</customers>

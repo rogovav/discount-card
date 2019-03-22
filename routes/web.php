@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'CustomerController@index')->name('customers');
+Route::get('/new', 'CustomerController@new')->name('newCustomers');
+Route::post('/', 'CustomerController@store');

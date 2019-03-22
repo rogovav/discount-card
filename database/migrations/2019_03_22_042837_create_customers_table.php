@@ -18,8 +18,8 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('patronymic')->nullable();
-            $table->string('phone');
-            $table->string('card_number');
+            $table->string('phone')->unique();
+            $table->string('card_number')->unique();
             $table->integer('sum')->nullable();
             $table->integer('percent')->default(3);
             $table->timestamps();

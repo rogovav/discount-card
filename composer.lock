@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4731429c7f25ab92eaa813447a972209",
+    "content-hash": "367d691c26fb6f33a35aa67f6766829e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -456,16 +456,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.5",
+            "version": "v5.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "791992e20efdf043ac3c2d989025d48d648821de"
+                "reference": "f12c7baf9ceee80b131e06a01d3221d9a2488670"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/791992e20efdf043ac3c2d989025d48d648821de",
-                "reference": "791992e20efdf043ac3c2d989025d48d648821de",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f12c7baf9ceee80b131e06a01d3221d9a2488670",
+                "reference": "f12c7baf9ceee80b131e06a01d3221d9a2488670",
                 "shasum": ""
             },
             "require": {
@@ -599,7 +599,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-03-19T14:20:36+00:00"
+            "time": "2019-03-21T16:54:38+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1392,6 +1392,55 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "spatie/array-to-xml",
+            "version": "2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/array-to-xml.git",
+                "reference": "2bf193b3f795d5a42e147c4fa155c288878312e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/2bf193b3f795d5a42e147c4fa155c288878312e7",
+                "reference": "2bf193b3f795d5a42e147c4fa155c288878312e7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^7.0",
+                "spatie/phpunit-snapshot-assertions": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ArrayToXml\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://murze.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convert an array to xml",
+            "homepage": "https://github.com/spatie/array-to-xml",
+            "keywords": [
+                "array",
+                "convert",
+                "xml"
+            ],
+            "time": "2019-03-15T18:43:25+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
