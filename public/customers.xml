@@ -1,17 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<customers>
-    <customer>
-        <fio>Александр Рогов</fio>
-        <cardNumber>2000000000001</cardNumber>
-        <phone>+79170074642</phone>
-        <sum>0</sum>
-        <percent>3</percent>
-    </customer>
-    <customer>
-        <fio>Александр Рогов</fio>
-        <cardNumber>2000000000002</cardNumber>
-        <phone>+79170074643</phone>
-        <sum>0</sum>
-        <percent>3</percent>
-    </customer>
-</customers>
+<customers><customer><fio>Александр Рогов</fio><birthday>1994-10-21</birthday><cardNumber>крепм00000001</cardNumber><phone>+79170074642</phone><sum>5760</sum><percent>5</percent></customer><customer><fio>Антон Иванов Викторович</fio><birthday>1994-10-21</birthday><cardNumber>крепм00000002</cardNumber><phone>+79170074643</phone><sum>745</sum><percent>3</percent></customer></customers>
