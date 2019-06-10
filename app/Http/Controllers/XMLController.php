@@ -17,7 +17,7 @@ class XMLController extends Controller
             $customers = new \SimpleXMLElement($file);
             foreach ($customers as $customer)
             {
-                Customer::where('card_number', $customer->cardNumber)->update([
+                Customer::where('card_number', substr($customer->cardNumber, 5))->update([
                     'sum' => $customer->sum,
                     'percent' => $customer->percent,
                 ]);
@@ -40,7 +40,7 @@ class XMLController extends Controller
             $fio = $dom->createElement("fio", $item->name . ' ' . $item->surname . ($item->patronymic ? (' ' . $item->patronymic) : null));
             $birthday = $dom->createElement("birthday", $item->birthday);
             $phone = $dom->createElement("phone", $item->phone);
-            $cardNumber = $dom->createElement("cardNumber", $item->card_number);
+            $cardNumber = $dom->createElement("cardNumber", "KREPM" . $item->card_number);
             $sum = $dom->createElement("sum", $item->sum);
             $percent = $dom->createElement("percent", $item->percent);
             $customer->appendChild($fio);

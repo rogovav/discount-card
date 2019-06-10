@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use DOMDocument;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -23,13 +22,13 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $lastCustomer = Customer::orderBy('card_number')->get()->last();
-        $lastCardNumber = ($lastCustomer? $lastCustomer->card_number : '2000000000000');
+        $lastCardNumber = ($lastCustomer? $lastCustomer->card_number : "00001");
         $customer = Customer::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'patronymic' => $request->patronymic,
             'phone' => $request->phone,
-            'card_number' => $lastCardNumber + 1
+            'card_number' => str_pad($lastCardNumber + 1, 5, '0', STR_PAD_LEFT)
         ]);
         return $customer;
     }

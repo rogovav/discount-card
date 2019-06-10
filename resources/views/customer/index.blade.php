@@ -25,7 +25,7 @@
                         <td>{{ $customer->name }} {{ $customer->surname }} {{ $customer->patronymic }}</td>
                         <td>{{ $customer->birthday }}</td>
                         <td>{{ $customer->phone }}</td>
-                        <td>{{ $customer->card_number }}</td>
+                        <td>{{ "KREPM" . $customer->card_number }}</td>
                         <td>{{ $customer->sum }}</td>
                         <td>{{ $customer->percent }}</td>
                         <td>{{ $customer->mac }}</td>

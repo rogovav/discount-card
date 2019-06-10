@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'CustomerController@index')->name('customers');
 Route::post('/', 'CustomerController@store');
+Route::post('/show', 'CustomerController@show');
 Route::post('/xml', 'XMLController@update')->name('updateCustomers');
 Route::get('/getXML', 'XMLController@getXML')->name('getXML');
 Route::get('/shops', 'ShopController@index')->name('shops');
