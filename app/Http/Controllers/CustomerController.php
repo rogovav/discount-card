@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CustomerController extends Controller
 {
@@ -29,7 +30,7 @@ class CustomerController extends Controller
             'patronymic' => $request->patronymic,
             'phone' => $request->phone,
             'birthday' => $request->birthday,
-            'mac' => $request->mac,
+            'mac' => Str::random(20),
             'card_number' => str_pad($lastCardNumber + 1, 5, '0', STR_PAD_LEFT)
         ]);
         return $customer;
