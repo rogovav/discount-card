@@ -28,6 +28,8 @@ class CustomerController extends Controller
             'surname' => $request->surname,
             'patronymic' => $request->patronymic,
             'phone' => $request->phone,
+            'birthday' => $request->birthday,
+            'mac' => $request->mac,
             'card_number' => str_pad($lastCardNumber + 1, 5, '0', STR_PAD_LEFT)
         ]);
         return $customer;
