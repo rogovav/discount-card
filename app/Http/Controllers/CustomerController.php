@@ -31,6 +31,8 @@ class CustomerController extends Controller
             'phone' => $request->phone,
             'birthday' => $request->birthday,
             'mac' => Str::random(20),
+            'sum' => 0,
+            'percent' => 3,
             'card_number' => str_pad($lastCardNumber + 1, 5, '0', STR_PAD_LEFT)
         ]);
         return $customer;

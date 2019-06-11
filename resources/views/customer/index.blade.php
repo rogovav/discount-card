@@ -28,7 +28,7 @@
                         <td>{{ "KREPM" . $customer->card_number }}</td>
                         <td>{{ $customer->sum }}</td>
                         <td>{{ $customer->percent }}</td>
-                        <td>{{ $customer->mac }}</td>
+                        <td>{{ $customer->MAC }}</td>
 {{--                        <td>{{ $customer->registered? 'Да' : 'Нет' }}</td>--}}
                     </tr>
                 @endforeach
