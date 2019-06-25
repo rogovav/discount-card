@@ -65,6 +65,6 @@ class XMLController extends Controller
         $file_name = "customers.xml";
 
         $file_path = public_path($file_name);
-        return response()->download("public/".$file_name);
+        return response()->download($file_name);
     }
 }
