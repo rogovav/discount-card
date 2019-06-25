@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Customer;
 use DOMDocument;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\Cast\Int_;
 
 class XMLController extends Controller
 {
