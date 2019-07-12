@@ -15,21 +15,33 @@ class XMLController extends Controller
             $file = $file->openFile()->fread($file->getSize());
             $customers = new \SimpleXMLElement($file);
             foreach ($customers as $customer) {
-                $sum = floatval($customer->СуммаВыручки);
+                foreach ($customer->attributes() as $a => $b) {
+                    if ($a == 'СуммаВыручки') {
+                        $sum = floatval($b);
 
-                if ($sum < 7000) {
-                    $percent = 3;
-                } elseif ($sum >= 7000 && $sum < 15000) {
-                    $percent = 5;
-                } elseif ($sum >= 15000 && $sum < 30000) {
-                    $percent = 7;
-                } else {
-                    $percent = 10;
+                        if ($sum < 7000) {
+                            $percent = 3;
+                        } elseif ($sum >= 7000 && $sum < 15000) {
+                            $percent = 5;
+                        } elseif ($sum >= 15000 && $sum < 30000) {
+                            $percent = 7;
+                        } else {
+                            $percent = 10;
+                        }
+                    }
+
+
+                    if ($a == 'НомерКарты') {
+                        $cardNumber = substr($b, 5);
+                    }
                 }
-                Customer::where('card_number', substr($customer->НомерКарты, 5))->update([
-                    'sum' => $customer->СуммаВыручки,
-                    'percent' => $percent,
-                ]);
+
+                if ($sum && $cardNumber) {
+                    Customer::where('card_number', $cardNumber)->update([
+                        'sum' => $sum,
+                        'percent' => $percent,
+                    ]);
+                }
             }
             return redirect()->route('customers')->with('status', 1);
         } else {
@@ -46,16 +58,35 @@ class XMLController extends Controller
         $dom->appendChild($root);
         foreach ($customers as $item) {
             $customer = $dom->createElement("Держатель"); // Создаём узел "user"
-            $fio = $dom->createElement("ДержательИмя", $item->name . ' ' . $item->surname . ($item->patronymic ? (' ' . $item->patronymic) : null));
+//            $root->appendChild("Держатель");
+
+            $domAttribute = $dom->createAttribute('ДержательИмя');
+            $domAttribute->value = $item->name . ' ' . $item->surname . ($item->patronymic ? (' ' . $item->patronymic) : null);
+
+            $customer->appendChild($domAttribute);
+
+            $domAttribute = $dom->createAttribute('Телефон');
+            $domAttribute->value = $item->phone;
+
+            $customer->appendChild($domAttribute);
+
+            $domAttribute = $dom->createAttribute('НомерКарты');
+            $domAttribute->value = "KREPM" . $item->card_number;
+
+            $customer->appendChild($domAttribute);
+
+//            $customer->addAttribute('Телефон', $item->phone);
+//            $customer->addAttribute('НомерКарты', "KREPM" . $item->card_number);
+//            $fio = $dom->createElement("ДержательИмя", $item->name . ' ' . $item->surname . ($item->patronymic ? (' ' . $item->patronymic) : null));
 //            $birthday = $dom->createElement("birthday", $item->birthday);
-            $phone = $dom->createElement("Телефон", $item->phone);
-            $cardNumber = $dom->createElement("НомерКарты", "KREPM" . $item->card_number);
+//            $phone = $dom->createElement("Телефон", $item->phone);
+//            $cardNumber = $dom->createElement("НомерКарты", "KREPM" . $item->card_number);
 //            $sum = $dom->createElement("СуммаВыручки", $item->sum);
 //            $percent = $dom->createElement("percent", $item->percent);
-            $customer->appendChild($fio);
+//            $customer->appendChild($fio);
 //            $customer->appendChild($birthday);
-            $customer->appendChild($cardNumber);
-            $customer->appendChild($phone);
+//            $customer->appendChild($cardNumber);
+//            $customer->appendChild($phone);
 //            $customer->appendChild($sum);
 //            $customer->appendChild($percent);
             $root->appendChild($customer);
