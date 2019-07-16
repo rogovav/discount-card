@@ -17,7 +17,7 @@ class CustomerController extends Controller
 
     public function show(Request $request)
     {
-        $customer = Customer::where('email', $request->email)->first();
+        $customer = Customer::where('email', $request->email)->get()->last();
         if ($customer) {
             $code = $request->code;
             $customer->code = (int) $code;
