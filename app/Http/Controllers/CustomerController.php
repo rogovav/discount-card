@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerController extends Controller
 {
@@ -16,8 +17,17 @@ class CustomerController extends Controller
 
     public function show(Request $request)
     {
-        $customer = Customer::where('phone', $request->phone)->get();
-        return $customer;
+        $customer = Customer::where('email', $request->email)->first();
+        if ($customer) {
+            $code = $request->code;
+            $customer->code = $code;
+            Mail::send('emails.welcome', "Привет мир", function ($m) use ($customer) {
+                $m->from('card@krepm.ru', 'KrepM');
+                $m->to($customer->email, $customer->name)->subject('Verification');
+            });
+            return $customer;
+        }
+        return response()->json(['message' => 'Not found'], 404);
     }
 
     public function store(Request $request)
@@ -30,7 +40,8 @@ class CustomerController extends Controller
             'patronymic' => $request->patronymic,
             'phone' => $request->phone,
             'birthday' => $request->birthday,
-            'mac' => Str::random(20),
+            'email' => $request->email,
+            'MAC' => Str::random(20),
             'sum' => 0,
             'percent' => 3,
             'card_number' => str_pad($lastCardNumber + 1, 5, '0', STR_PAD_LEFT)

@@ -11,7 +11,7 @@
                 <thead>
                 <tr>
                     <th>ФИО</th>
-                    <th>День рождения</th>
+{{--                    <th>День рождения</th>--}}
                     <th>Телефон</th>
                     <th>Номер карты</th>
                     <th>Сумма</th>
@@ -23,7 +23,7 @@
                 @foreach($customers as $customer)
                     <tr class="search-tr">
                         <td>{{ $customer->name }} {{ $customer->surname }} {{ $customer->patronymic }}</td>
-                        <td>{{ $customer->birthday }}</td>
+{{--                        <td>{{ $customer->birthday }}</td>--}}
                         <td>{{ $customer->phone }}</td>
                         <td>{{ "KREPM" . $customer->card_number }}</td>
                         <td>{{ $customer->sum }}</td>

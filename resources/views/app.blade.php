@@ -28,12 +28,12 @@
             <li class="nav-item {{ Route::currentRouteName() == 'customers' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('customers') }}">Клиенты</a>
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'shops' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('shops') }}">Магазины</a>
-            </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'conditions' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('conditions') }}">Условия</a>
-            </li>
+{{--            <li class="nav-item {{ Route::currentRouteName() == 'shops' ? 'active' : '' }}">--}}
+{{--                <a class="nav-link" href="{{ route('shops') }}">Магазины</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item {{ Route::currentRouteName() == 'conditions' ? 'active' : '' }}">--}}
+{{--                <a class="nav-link" href="{{ route('conditions') }}">Условия</a>--}}
+{{--            </li>--}}
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('getXML') }}">Скачать</a>
             </li>
@@ -76,7 +76,7 @@
             <form action="{{ route('updateCustomers') }}" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="custom-file">
-                        {{ csrf_field() }}
+{{--                        {{ csrf_field() }}--}}
                         <input type="file" class="custom-file-input" id="customFileLangHTML" name="xml">
                         <label class="custom-file-label" for="customFileLangHTML" data-browse="Обзор">Выберите
                             файл</label>
