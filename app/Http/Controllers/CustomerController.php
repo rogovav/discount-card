@@ -21,10 +21,20 @@ class CustomerController extends Controller
         if ($customer) {
             $code = $request->code;
             $customer->code = $code;
-            Mail::send('email', ['code' => $code], function ($m) use ($customer) {
-                $m->from('card@krepm.ru', 'KrepM');
-                $m->to($customer->email, $customer->name)->subject('Verification');
-            });
+//            Mail::send('email', ['code' => $code], function ($m) use ($customer) {
+//                $m->from('card@krepm.ru', 'KrepM');
+//                $m->to($customer->email, $customer->name)->subject('Verification');
+//            });
+
+
+            $from = "card@krepm.ru";
+            $to = $customer->name;
+            $subject = "Verification";
+            $message = "Код подтверждения: " . $code;
+            $headers = "From:" . $from;
+            mail($to,$subject,$message, $headers);
+
+
             return $customer;
         }
         return response()->json(['message' => 'Not found'], 404);
