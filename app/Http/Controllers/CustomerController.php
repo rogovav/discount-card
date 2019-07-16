@@ -28,7 +28,7 @@ class CustomerController extends Controller
 
 
             $from = "card@krepm.ru";
-            $to = $customer->name;
+            $to = $customer->email;
             $subject = "Verification";
             $message = "Код подтверждения: " . $code;
             $headers = "From:" . $from;
