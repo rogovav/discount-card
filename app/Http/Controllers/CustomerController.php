@@ -21,7 +21,7 @@ class CustomerController extends Controller
         if ($customer) {
             $code = $request->code;
             $customer->code = $code;
-            Mail::send('emails.welcome', "Привет мир", function ($m) use ($customer) {
+            Mail::send('email', ['code' => $code], function ($m) use ($customer) {
                 $m->from('card@krepm.ru', 'KrepM');
                 $m->to($customer->email, $customer->name)->subject('Verification');
             });
