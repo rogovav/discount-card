@@ -20,7 +20,7 @@ class CustomerController extends Controller
         $customer = Customer::where('email', $request->email)->first();
         if ($customer) {
             $code = $request->code;
-            $customer->code = $code;
+            $customer->code = (int) $code;
 //            Mail::send('email', ['code' => $code], function ($m) use ($customer) {
 //                $m->from('card@krepm.ru', 'KrepM');
 //                $m->to($customer->email, $customer->name)->subject('Verification');
