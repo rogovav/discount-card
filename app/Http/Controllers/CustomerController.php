@@ -26,14 +26,14 @@ class CustomerController extends Controller
 //                $m->to($customer->email, $customer->name)->subject('Verification');
 //            });
 
-
-            $from = "card@krepm.ru";
-            $to = $customer->email;
-            $subject = "Verification";
-            $message = "Код подтверждения: " . $code;
-            $headers = "From:" . $from;
-            mail($to,$subject,$message, $headers);
-
+            if ($code) {
+                $from = "card@krepm.ru";
+                $to = $customer->email;
+                $subject = "Verification";
+                $message = "Код подтверждения: " . $code;
+                $headers = "From:" . $from;
+                mail($to,$subject,$message, $headers);
+            }
 
             return $customer;
         }
