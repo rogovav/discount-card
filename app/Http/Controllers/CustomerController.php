@@ -19,9 +19,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::where('email', $request->email)->get()->last();
         if ($customer) {
-            $customer->update([
-                'MAC' => Str::random(20),
-            ]);
+
             $code = $request->code;
             $customer->code = (int) $code;
 //            Mail::send('email', ['code' => $code], function ($m) use ($customer) {
@@ -30,6 +28,10 @@ class CustomerController extends Controller
 //            });
 
             if ($code) {
+                $customer->update([
+                    'MAC' => Str::random(20),
+                ]);
+
                 $from = "card@krepm.ru";
                 $to = $customer->email;
                 $subject = "Verification";
